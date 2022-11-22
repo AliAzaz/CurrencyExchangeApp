@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.currencyexchange.app.model.CurrencyMapper" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/parentLayout"
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@color/currency_background"
+        android:elevation="@dimen/_1sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_3sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containeridcard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/currency_background">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCurrencyCode"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:elevation="@dimen/_2sdp"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:text="@{item.code}"
+                android:textColor="@color/txt_background"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                tools:text="USD" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCurrencyConverted"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:elevation="@dimen/_2sdp"
+                android:gravity="right | center"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/txt_background"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:amountFormat="@{item.amount}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvCurrencyCode"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                tools:text="223" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCurrencyCountry"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:elevation="@dimen/_2sdp"
+                android:gravity="bottom | right"
+                android:padding="@dimen/_5sdp"
+                android:text="@{item.country}"
+                android:textColor="@color/txt_background"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvCurrencyCode"
+                app:layout_constraintTop_toTopOf="@+id/tvCurrencyConverted"
+                tools:ignore="HardcodedText"
+                tools:text="United States of America" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
